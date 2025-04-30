@@ -60,6 +60,22 @@ class VecteurTest {
     }
 
     @Test
+    void ajouterListe() {
+        // Étape 1: Préparer les données du test
+        Liste<Character> v2 = new Liste<>();
+        v2.ajouter('F');
+        v2.ajouter('G');
+        v2.ajouter('H');
+
+        // Étape 2: Utiliser la ou les méthodes à tester
+        v1.ajouterTout(v2);
+
+        // Étape 3: Valider les résultats attendus vs. obtenus
+        assertEquals(6, v1.getNbElements());
+        assertEquals("[A, C, E, F, G, H]", v1.toString());
+    }
+
+    @Test
     void trouverElement() {
         // Étape 1: Préparer les données du test
         // Ici aussi, on se fie sur la méthode setUp() pour mettre les 3 premiers éléments dans v1.

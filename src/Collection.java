@@ -13,7 +13,7 @@ public abstract class Collection<ParamType> {
     public abstract void ajouter(ParamType element);
     public abstract void ajouter(ParamType element, int index);
 
-    public void ajouterTout(Collection<ParamType> autre) { // Équivalent à 'ArrayList.addAll(collection)'
+    public void ajouterTout(Collection<ParamType> autre) { // Équivalent à 'List.addAll(collection)'
         int stop = autre.getNbElements(); // Cette ligne permet d'éviter une boucle infinie si autre == this;
         for (int i = 0; i < stop; i++)
             this.ajouter(autre.get(i));

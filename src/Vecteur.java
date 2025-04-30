@@ -1,18 +1,20 @@
 public class Vecteur<ParamType> extends Collection<ParamType> {
-    private static final int RATIO_AGRANDISSEMENT = 2;
-    private static final int CAPACITE_INITIALE = 5;
+    private static final int CAPACITE_INITIALE = 5, RATIO_AGRANDISSEMENT = 2;
 
     private ParamType[] tab; // Les données du Vecteur sont stockées dans un tableau (array).
 
     // Constructeur avec une capacité initiale configurable (n'est pas exigé dans les notes de cours)
     public Vecteur(int capaciteInitiale) {
         this.tab = (ParamType[])(new Object[capaciteInitiale]);
-        this.nbElements = 0;
     }
 
     // Constructeur vide (qui utilise la capacité initiale par défaut)
     public Vecteur() {
         this(CAPACITE_INITIALE); // Délégation au constructeur avec une taille initiale.
+    }
+
+    private boolean estPlein() {
+        return nbElements == tab.length;
     }
 
     public ParamType get(int index) { // Appelé 'getElementAt()' dans les notes de cours
@@ -21,15 +23,21 @@ public class Vecteur<ParamType> extends Collection<ParamType> {
         return tab[index];
     }
 
-    private boolean estPlein() {
-        return nbElements == tab.length;
-    }
-
-    private void agrandir() { // Appelé 'resize()' dans les notes de cours
-        ParamType[] newTab = (ParamType[])(new Object[tab.length * RATIO_AGRANDISSEMENT]);
-        for (int i = 0; i < tab.length; i++)
+    private void resize(int nouvelleCapacite) { // Permet d'agrandir ou de réduire la capacité du Vecteur.
+        assert nouvelleCapacite >= nbElements;
+        ParamType[] newTab = (ParamType[]) (new Object[nouvelleCapacite]);
+        for (int i = 0; i < nbElements; i++)
             newTab[i] = tab[i];
         tab = newTab;
+    }
+
+    private void agrandir(int taille) {
+        if (nbElements + taille > tab.length)
+            resize(nbElements + taille);
+    }
+
+    private void agrandir() {
+        resize(tab.length * RATIO_AGRANDISSEMENT);
     }
 
     public void ajouter(ParamType element) { // Équivalent à 'ArrayList.add(element)'
@@ -47,7 +55,11 @@ public class Vecteur<ParamType> extends Collection<ParamType> {
         nbElements++;
     }
 
-
+    @Override // Cette version de ajouterTout() est optimisée pour la classe Vecteur.
+    public void ajouterTout(Collection<ParamType> autre) {
+        agrandir(autre.getNbElements()); // On agrandit d'un coup le vecteur à une taille suffisante.
+        super.ajouterTout(autre); // Puis on continue "normalement" avec la méthode de notre superclasse.
+    }
 
     public int trouver(ParamType element) { // Équivalent à 'ArrayList.indexOf(element)'
         for (int i = 0; i < nbElements; i++)

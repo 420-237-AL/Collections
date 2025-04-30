@@ -17,7 +17,7 @@ public class Main {
         System.out.println(v1.getNbElements() + ": " + v1);
 
         // Test de ajouterTout(vecteur)
-        Liste<Character> v2 = new Liste<>(); // ou Vecteur v2 = new Vecteur();
+        Collection<Character> v2 = new Vecteur<>(); // ou 'v2 = new Liste<>();'
         v2.ajouter('F');
         v2.ajouter('G');
         v2.ajouter('H');
