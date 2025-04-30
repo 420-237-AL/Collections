@@ -1,9 +1,8 @@
-public class Vecteur<ParamType> {
+public class Vecteur<ParamType> extends Collection {
     private static final int RATIO_AGRANDISSEMENT = 2;
     private static final int CAPACITE_INITIALE = 5;
 
     private ParamType[] tab; // Les données du Vecteur sont stockées dans un tableau (array).
-    private int nbElements;
 
     // Constructeur avec une capacité initiale configurable (n'est pas exigé dans les notes de cours)
     public Vecteur(int capaciteInitiale) {

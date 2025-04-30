@@ -1,6 +1,5 @@
-public class Liste<ParamType> {
+public class Liste<ParamType> extends Collection {
     private Noeud premier; // Dans une liste, il n'y a pas de tableau, seulement un pointeur vers le premier Noeud.
-    private int nbElements; // L'attribut nbElements n'est pas essentiel, mais il demeure utile.
 
     // Lorsqu'une classe est seulement utile comme "partie" d'une autre, on peut la déclarer à l'intérieur de sa parente.
     private class Noeud {
