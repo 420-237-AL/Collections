@@ -5,12 +5,12 @@ import static org.junit.jupiter.api.Assertions.*; // Cet import contient les mé
 
 class VecteurTest {
     // On peut déclarer des variables membres comme dans n'importe quelle classe.
-    Vecteur v1;
+    Vecteur<Character> v1;
 
     // La méthode 'setUp()' sert à initialiser les objets à tester pour éviter de toujours recopier le même code.
     @BeforeEach
     void setUp() { //
-        v1 = new Vecteur();
+        v1 = new Vecteur<>();
         v1.ajouter('A');
         v1.ajouter('C');
         v1.ajouter('E');
@@ -46,7 +46,7 @@ class VecteurTest {
     void ajouterVecteur() {
         // Étape 1: Préparer les données du test
         // Pas besoin de préparer une tonne de données, souvent quelques-unes suffisent.
-        Vecteur v2 = new Vecteur();
+        Vecteur<Character> v2 = new Vecteur<>();
         v2.ajouter('F');
         v2.ajouter('G');
         v2.ajouter('H');
@@ -74,14 +74,14 @@ class VecteurTest {
     @Test
     void trouverVecteur() {
         // Étape 1: Préparer les données du test
-        v1 = new Vecteur(); // Cette fois, on préfère partir d'un nouveau vecteur configuré sur mesure.
+        v1 = new Vecteur<>(); // Cette fois, on préfère partir d'un nouveau vecteur configuré sur mesure.
         v1.ajouter('A');
         v1.ajouter('B');
         v1.ajouter('C');
         v1.ajouter('D');
         v1.ajouter('E');
 
-        Vecteur v2 = new Vecteur();
+        Vecteur<Character> v2 = new Vecteur<>();
         v2.ajouter('A');
         v2.ajouter('C');
         v2.ajouter('E');
@@ -138,14 +138,14 @@ class VecteurTest {
     @Test
     void retirerVecteur() {
         // Étape 1: Préparer les données du test
-        v1 = new Vecteur(); // Cette fois, on a besoin d'un vecteur configuré sur mesure.
+        v1 = new Vecteur<>(); // Cette fois, on a besoin d'un vecteur configuré sur mesure.
         v1.ajouter('A');
         v1.ajouter('B');
         v1.ajouter('C');
         v1.ajouter('D');
         v1.ajouter('E');
 
-        Vecteur v2 = new Vecteur();
+        Vecteur<Character> v2 = new Vecteur<>();
         v2.ajouter('A');
         v2.ajouter('C');
         v2.ajouter('E');
@@ -156,7 +156,7 @@ class VecteurTest {
         assertEquals("[B, D]", v1.toString());
 
         // Sous-test: Retirer un élément inexistant
-        Vecteur v3 = new Vecteur();
+        Vecteur<Character> v3 = new Vecteur<>();
         v3.ajouter('B');
         v3.ajouter('X');
 
