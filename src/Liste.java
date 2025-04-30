@@ -1,4 +1,4 @@
-public class Liste<ParamType> extends Collection {
+public class Liste<ParamType> extends Collection<ParamType> {
     private Noeud premier; // Dans une liste, il n'y a pas de tableau, seulement un pointeur vers le premier Noeud.
 
     // Lorsqu'une classe est seulement utile comme "partie" d'une autre, on peut la déclarer à l'intérieur de sa parente.
@@ -30,14 +30,6 @@ public class Liste<ParamType> extends Collection {
     public Liste() {
         this.premier = null;
         this.nbElements = 0;
-    }
-
-    public int getNbElements() { // Équivalent à 'LinkedList.size()'
-        return nbElements;
-    }
-
-    public boolean estVide() { // Équivalent à 'LinkedList.isEmpty()'
-        return nbElements == 0;
     }
 
     public ParamType get(int index) {
@@ -88,12 +80,6 @@ public class Liste<ParamType> extends Collection {
             precedent.suivant = nouveau;
         }
         nbElements++;
-    }
-
-    public void ajouterTout(Liste<ParamType> autre) { // Équivalent à 'LinkedList.addAll(collection)'
-        int stop = autre.getNbElements(); // Cette ligne permet d'éviter une boucle infinie si autre == this;
-        for (int i = 0; i < stop; i++)
-            this.ajouter(autre.get(i));
     }
 
     // En utilisant seulement des méthodes publiques, on peut réutiliser le même code mais avec un Vecteur en paramètre.

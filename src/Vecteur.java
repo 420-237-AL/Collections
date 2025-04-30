@@ -1,4 +1,4 @@
-public class Vecteur<ParamType> extends Collection {
+public class Vecteur<ParamType> extends Collection<ParamType> {
     private static final int RATIO_AGRANDISSEMENT = 2;
     private static final int CAPACITE_INITIALE = 5;
 
@@ -19,14 +19,6 @@ public class Vecteur<ParamType> extends Collection {
         if (index >= nbElements)
             throw new IndexOutOfBoundsException(); // Nous verrons les Exceptions plus tard dans le cours.
         return tab[index];
-    }
-
-    public int getNbElements() { // Équivalent à 'ArrayList.size()'
-        return nbElements;
-    }
-
-    public boolean estVide() { // Équivalent à 'ArrayList.isEmpty()'
-        return nbElements == 0;
     }
 
     private boolean estPlein() {
@@ -55,11 +47,7 @@ public class Vecteur<ParamType> extends Collection {
         nbElements++;
     }
 
-    public void ajouterTout(Vecteur<ParamType> autre) { // Équivalent à 'ArrayList.addAll(collection)'
-        int stop = autre.getNbElements(); // Cette ligne permet d'éviter une boucle infinie si autre == this;
-        for (int i = 0; i < stop; i++)
-            this.ajouter(autre.get(i));
-    }
+
 
     public int trouver(ParamType element) { // Équivalent à 'ArrayList.indexOf(element)'
         for (int i = 0; i < nbElements; i++)
