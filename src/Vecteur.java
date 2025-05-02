@@ -61,19 +61,6 @@ public class Vecteur<ParamType> extends Collection<ParamType> {
         super.ajouterTout(autre); // Puis on continue "normalement" avec la méthode de notre superclasse.
     }
 
-    // Cette "surcharge" de trouverTout() retourne le nombre d'éléments communs entre les vecteurs.
-    public int trouverNbCommuns(Vecteur<ParamType> autre) { // On ne peut pas l'appeler trouverTout() car seul le type de retour est différent :(
-        int communs = 0;
-        for (int i = 0; i < autre.nbElements; i++)
-            if (this.trouver(autre.tab[i]) != -1)
-                communs++;
-        return communs;
-    }
-
-    public boolean trouverTout(Vecteur<ParamType> autre) {
-        return (this.trouverNbCommuns(autre) == autre.nbElements); // Pas besoin d'un 'if' puisque l'opérateur '==' retourne déjà un booléen.
-    }
-
     public boolean retirer(int index) { // N'est pas exigé dans les notes de cours, mais est plutôt utile.
         if (index >= nbElements) // Ceci est une "clause de garde", ça sert à quitter immédiatement la fonction en cas d'erreur.
             return false;

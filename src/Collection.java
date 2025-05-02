@@ -19,10 +19,23 @@ public abstract class Collection<ParamType> {
             this.ajouter(autre.get(i));
     }
 
-    public int trouver(ParamType element) { // Équivalent à 'ArrayList.indexOf(element)'
+    public int trouver(ParamType element) { // Équivalent à 'List.indexOf(element)'
         for (int i = 0; i < nbElements; i++)
-            if (get(i) == element) // On utilise get(i) au lieu de tab[i]; En fait le même code marcherait dans Vecteur aussi.
+            if (get(i) == element) // La complexité de cette méthode va dépendre de celle de 'get(index)'.
                 return i;
         return -1;
+    }
+
+    // Cette "surcharge" de trouverTout() retourne le nombre d'éléments communs entre les collections;
+    public int trouverNbCommuns(Collection<ParamType> autre) { // Elle accepte toutes les sortes de Collection.
+        int communs = 0;
+        for (int i = 0; i < autre.getNbElements(); i++)
+            if (this.trouver(autre.get(i)) != -1)
+                communs++;
+        return communs;
+    }
+
+    public boolean trouverTout(Collection<ParamType> autre) {
+        return (this.trouverNbCommuns(autre) == autre.getNbElements()); // Pas besoin d'un 'if' puisque l'opérateur '==' retourne déjà un booléen.
     }
 }

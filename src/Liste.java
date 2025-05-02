@@ -76,8 +76,7 @@ public class Liste<ParamType> extends Collection<ParamType> {
         nbElements++;
     }
 
-    // Cette redéfinition de 'trouver()' est sensiblement plus rapide que celle de base pour obtenir son résultat.
-    @Override
+    @Override // Cette redéfinition de 'trouver()' est sensiblement plus rapide que celle de base pour obtenir son résultat.
     public int trouver(ParamType element) {
         int i = 0;
         for (Noeud courant = premier; courant != null; courant = courant.suivant) {
@@ -87,18 +86,6 @@ public class Liste<ParamType> extends Collection<ParamType> {
                 i++;
         }
         return -1;
-    }
-
-    public int trouverNbCommuns(Liste<ParamType> autre) { // Ici aussi on pourrait recopier cette méthode avec un paramètre de type Vecteur.
-        int communs = 0;
-        for (int i = 0; i < autre.getNbElements(); i++)
-            if (this.trouver(autre.get(i)) != -1)
-                communs++;
-        return communs;
-    }
-
-    public boolean trouverTout(Liste<ParamType> autre) {
-        return (this.trouverNbCommuns(autre) == autre.getNbElements()); // Pas besoin d'un 'if' puisque l'opérateur '==' retourne déjà un booléen.
     }
 
     public boolean retirer(int index) { // N'est pas exigé dans les notes de cours, mais est plutôt utile.

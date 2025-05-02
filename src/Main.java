@@ -16,7 +16,7 @@ public class Main {
         v1.ajouter('D', 3);
         System.out.println(v1.getNbElements() + ": " + v1);
 
-        // Test de ajouterTout(vecteur)
+        // Test de ajouterTout(collection)
         Collection<Character> v2 = new Vecteur<>(); // ou 'v2 = new Liste<>();'
         v2.ajouter('F');
         v2.ajouter('G');
@@ -35,8 +35,8 @@ public class Main {
         System.out.print(", " + v1.trouver('H'));
         System.out.println(", " + v1.trouver('X'));
 
-        // Test de trouver(liste)
-        Liste<Character> v3 = new Liste<>();
+        // Test de trouverTout(collection)
+        Collection<Character> v3 = new Liste<>();
         v3.ajouter('D');
         v3.ajouter('A');
         v3.ajouter('H');
