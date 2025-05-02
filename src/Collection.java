@@ -52,4 +52,8 @@ public abstract class Collection<ParamType> {
             reussite &= this.retirer(autre.get(i)); // L'opérateur '&=' est comme l'opérateur '+=' mais pour l'opération '&&'.
         return reussite;
     }
+
+    public abstract void retirerTout(); // Équivalent à 'List.clear()'
+
+    // On ne déclare pas la méthode toString() ici car elle est déjà héritée de la classe 'Object'.
 }

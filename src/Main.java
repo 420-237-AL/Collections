@@ -2,7 +2,7 @@ public class Main {
 
     // Le 'main' de la classe Vecteur peut être repris pour la classe Liste avec seulement quelques ajustements mineurs.
     public static void main(String[] args) {
-        Liste<Character> v1 = new Liste<>(); // J'ai gardé le nom "v1" pour pouvoir réutiliser le Main de Vecteur.
+        Collection<Character> v1 = new Liste<>(); // J'ai gardé le nom "v1" pour pouvoir réutiliser le Main de Vecteur.
         System.out.println(v1.getNbElements() + ": " + v1);
 
         // Test de ajouter(element) et ajouter(index)
@@ -55,7 +55,7 @@ public class Main {
         System.out.print("n=" + v1.getNbElements());
         System.out.println(", v=" + v1);
 
-        // Test de effacer(liste)
+        // Test de effacerTout(collection)
         Liste<Character> v4 = new Liste<>();
         v4.ajouter('E');
         v4.ajouter('B');
