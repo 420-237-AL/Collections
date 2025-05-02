@@ -70,18 +70,6 @@ public class Vecteur<ParamType> extends Collection<ParamType> {
         return true;
     }
 
-    public boolean retirer(ParamType element) {
-        int index = trouver(element);
-        return index != -1 ? retirer(index) : false;
-    }
-
-    public boolean retirerTout(Vecteur<ParamType> autre) {
-        boolean reussite = true;
-        for (int i = 0; i < autre.nbElements; i++)
-            reussite &= this.retirer(autre.tab[i]); // L'opérateur '&=' est comme l'opérateur '+=' mais pour l'opération '&&'.
-        return reussite;
-    }
-
     public void retirerTout() { // Équivalent à 'ArrayList.clear()'
         this.tab = (ParamType[])(new Object[CAPACITE_INITIALE]); // Créer un nouveau tableau va libérer la mémoire de l'ancien.
         this.nbElements = 0;

@@ -91,13 +91,10 @@ public class Liste<ParamType> extends Collection<ParamType> {
     public boolean retirer(int index) { // N'est pas exigé dans les notes de cours, mais est plutôt utile.
         if (index >= nbElements)
             return false;
-
-        if (index == 0) {
-            // Retirer le premier élément de la liste est super simple:
+        if (index == 0) { // Retirer le premier élément de la liste est super simple:
             premier = premier.suivant;
         }
-        else {
-            // Dans le cas général, on retire le noeud à l'index cible en liant son noeud précédent à son noeud suivant.
+        else { // Dans le cas général, on retire le noeud à l'index cible en liant son noeud précédent à son noeud suivant.
             Noeud precedent = getNoeud(index - 1);
             precedent.suivant = precedent.suivant.suivant;
         }
@@ -105,16 +102,9 @@ public class Liste<ParamType> extends Collection<ParamType> {
         return true;
     }
 
-    public boolean retirer(ParamType element) {
-        int index = trouver(element);
-        return index != -1 ? retirer(index) : false;
-    }
-
+    // Ici ce n'est pas vraiment une "redéfinition" de la méthode retirerTout(Collection) car cette variante ne fonctionne qu'avec des listes.
     public boolean retirerTout(Liste<ParamType> autre) {
         boolean reussite = true;
-        // Version 1: On peut reprendre le même code que pour la classe Vecteur, mais c'est un peu inefficace.
-        //for (int i = 0; i < autre.nbElements; i++)
-        //    reussite &= retirer(autre.get(i));
         // Version 2: On fait une boucle directement sur les noeuds de l'autre Liste, évitant ainsi la double boucle de get().
         for (Noeud courant = autre.premier; courant != null; courant = courant.suivant)
             reussite &= retirer(courant.valeur);

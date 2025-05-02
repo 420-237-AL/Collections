@@ -38,4 +38,18 @@ public abstract class Collection<ParamType> {
     public boolean trouverTout(Collection<ParamType> autre) {
         return (this.trouverNbCommuns(autre) == autre.getNbElements()); // Pas besoin d'un 'if' puisque l'opérateur '==' retourne déjà un booléen.
     }
+
+    public abstract boolean retirer(int index); // N'est pas exigé dans les notes de cours, mais est plutôt utile.
+
+    public boolean retirer(ParamType element) {
+        int index = trouver(element);
+        return index != -1 ? retirer(index) : false;
+    }
+
+    public boolean retirerTout(Collection<ParamType> autre) {
+        boolean reussite = true;
+        for (int i = 0; i < autre.getNbElements(); i++)
+            reussite &= this.retirer(autre.get(i)); // L'opérateur '&=' est comme l'opérateur '+=' mais pour l'opération '&&'.
+        return reussite;
+    }
 }
