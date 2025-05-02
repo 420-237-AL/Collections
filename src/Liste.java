@@ -76,16 +76,9 @@ public class Liste<ParamType> extends Collection<ParamType> {
         nbElements++;
     }
 
-    // On peut reprendre la méthode trouver(element) de la classe Vecteur presque sans changements.
+    // Cette redéfinition de 'trouver()' est sensiblement plus rapide que celle de base pour obtenir son résultat.
+    @Override
     public int trouver(ParamType element) {
-        for (int i = 0; i < nbElements; i++)
-            if (get(i) == element) // On utilise get(i) au lieu de tab[i]; En fait le même code marcherait dans Vecteur aussi.
-                return i;
-        return -1;
-    }
-
-    // Cette variante de 'trouver()' est sensiblement plus rapide que la précédente pour obtenir son résultat.
-    public int trouverRapide(ParamType element) {
         int i = 0;
         for (Noeud courant = premier; courant != null; courant = courant.suivant) {
             if (courant.valeur == element)

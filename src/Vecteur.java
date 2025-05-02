@@ -61,13 +61,6 @@ public class Vecteur<ParamType> extends Collection<ParamType> {
         super.ajouterTout(autre); // Puis on continue "normalement" avec la méthode de notre superclasse.
     }
 
-    public int trouver(ParamType element) { // Équivalent à 'ArrayList.indexOf(element)'
-        for (int i = 0; i < nbElements; i++)
-            if (tab[i] == element)
-                return i;
-        return -1;
-    }
-
     // Cette "surcharge" de trouverTout() retourne le nombre d'éléments communs entre les vecteurs.
     public int trouverNbCommuns(Vecteur<ParamType> autre) { // On ne peut pas l'appeler trouverTout() car seul le type de retour est différent :(
         int communs = 0;

@@ -87,12 +87,6 @@ class ListeTest {
         assertEquals(1, v1.trouver('C')); // Trouver un élément au milieu
         assertEquals(2, v1.trouver('E')); // Trouver le dernier élément
         assertEquals(-1, v1.trouver('X')); // Trouver un élément inexistant
-
-        // Variante avec la méthode trouverRapide()
-        assertEquals(0, v1.trouverRapide('A')); // Trouver le premier élément
-        assertEquals(1, v1.trouverRapide('C')); // Trouver un élément au milieu
-        assertEquals(2, v1.trouverRapide('E')); // Trouver le dernier élément
-        assertEquals(-1, v1.trouverRapide('X')); // Trouver un élément inexistant
     }
 
     @Test
