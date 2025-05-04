@@ -1,37 +1,27 @@
-public class Produit {
+public class Produit implements NotreComparable {
     private String nom;
-    private float prix;
+    private double prix;
     private final int id; // une "fausse" constante
 
     private static int nbProduits;
-    public static final float PRIX_MAX = 1000;
+    public static final double PRIX_MAX = 1000;
     public static final double TAXE = 0.15; // une "vraie" constante
 
     public static int getNbProduits() {
         return nbProduits;
     }
 
-    public double calulerTaxe() {
+    public double calculerTaxe() {
         return prix * (1 + TAXE);
     }
 
-    public Produit(String nom, float prix, int id) {
+    public Produit(String nom, double prix, int id) {
         this.nom = nom;
         this.prix = prix;
         this.id = id;
     }
 
-    public Produit(String nom, double prix, int id) {
-//        this.nom = nom;
-//        this.prix = (float)prix;
-//        this.id = id;
-        this(nom, (float)prix, id);
-    }
-
     public Produit(String nom, float prix) {
-//        this.nom = nom;
-//        this.prix = prix;
-//        this.id = nbProduits++;
         this(nom, prix, nbProduits++);
     }
 
@@ -43,8 +33,30 @@ public class Produit {
     }
 
     public Produit copier() {
-        // La méthode copier utilise le constructeur de copie
+        // La mÃ©thode copier() utilise le constructeur de copie
         return new Produit(this);
+    }
+
+    public String getNom() {
+        return this.nom;
+    }
+
+    public double getPrix() {
+        return prix;
+    }
+
+    public void setPrix(double prix) {
+        if (prix > 0 && prix <= PRIX_MAX)
+            this.prix = prix;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    @Override // Annotation optionnelle
+    public String toString() {
+        return nom + " : " + prix + " : " + id;
     }
 
     public boolean comparer(Produit autre) {
@@ -52,61 +64,23 @@ public class Produit {
                 && this.id == autre.id);
     }
 
-    public String getNom() {
-        return this.nom;
+    @Override
+    public boolean isEqual(NotreComparable autre) {
+        if (autre instanceof Produit) {
+            Produit pAutre = (Produit) autre;
+            return (this.nom.equalsIgnoreCase(pAutre.nom)
+                    && this.id == pAutre.id);
+        }
+        return false;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    @Override
+    public boolean isLessThan(NotreComparable autre) {
+        return false;
     }
 
-    public float getPrix() {
-        return prix;
-    }
-
-    public void setPrix(float prix) {
-        if (prix > 0 && prix <= PRIX_MAX)
-            this.prix = prix;
-    }
-
-    public Produit getById(int id_cherche) {
-        if (this.id == id_cherche)
-            return this;
-        return null;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-//    public void setId(int id) {
-//        this.id = id;
-//    }
-
-    @Override // Annotation optionnelle
-    public String toString() {
-        return nom + " : " + prix + " : " + id;
+    @Override
+    public boolean isGreaterThan(NotreComparable autre) {
+        return false;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

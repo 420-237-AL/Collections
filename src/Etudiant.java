@@ -1,33 +1,23 @@
-public class Etudiant {
-    public String nom;
-    public int matricule;
-    public double moyenne;
+public class Etudiant extends Personne {
+    private int matricule;
+    private double moyenne;
 
-    /* Constructeur de la classe Étudiant (nous verrons ça plus tard...)
-    public Etudiant(String nom, int matricule, double moyenne) {
-        this.nom = nom;
+    public Etudiant(String prenom, String nom, int age, int matricule, double moyenne) {
+        super(prenom, nom, age);
         this.matricule = matricule;
         this.moyenne = moyenne;
     }
-    */
 
-    /* Méthode qui compile et marche, mais le paramètre "e" est redondant.
-    public void afficher(Etudiant e) {
-        //System.out.println(david.nom + " (" + david.matricule + ") : " + david.moyenne); // Ne compile pas
-        System.out.println(e.nom + " (" + e.matricule + "): " + e.moyenne);
-    }
-    */
-
-    public void afficher() {
-        //System.out.println(e.nom + " (" + e.matricule + "): " + e.moyenne); // Ne compile pas
-        System.out.println(nom + " (" + matricule + "): " + moyenne);
-        //System.out.printf("%s (%d): %.2f\n", nom, matricule, moyenne); // Avec printf, c'est plus lisible.
+    public int getMatricule() {
+        return matricule;
     }
 
-    /* Méthode toString standard de Java (alternative à "afficher()") */
+    public double getMoyenne() {
+        return moyenne;
+    }
+
     @Override
     public String toString() {
-        return nom + " (" + matricule + "): " + moyenne;
-        //return String.format("%s (%d): %.2f\n", nom, matricule, moyenne);
+        return super.toString() + " [#" + matricule + "]";
     }
 }

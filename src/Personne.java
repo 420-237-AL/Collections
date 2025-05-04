@@ -1,84 +1,60 @@
-public class Personne {
-    private String nom, prenom;
-    private String adresse;
-    private int age;
+public class Personne implements NotreComparable {
+    protected String prenom, nom;
+    protected int age;
+    private final String NAS;
 
-    public Personne(String nom, String prenom, String adresse, int age) {
-        this.nom = nom;
+    public Personne(String prenom, String nom, int age) {
         this.prenom = prenom;
-        this.adresse = adresse;
-        this.age = age > 0 ? age : -1;
-    }
-
-    public Personne(String nom, String prenom, int age) {
         this.nom = nom;
-        this.prenom = prenom;
-        this.adresse = "";
         this.age = age > 0 ? age : -1;
-    }
-
-    public String getNom() {
-        return nom;
+        this.NAS = nom + prenom.substring(0, 2) + age;
     }
 
     public String getPrenom() {
         return prenom;
     }
 
-    public String getAdresse() {
-        return adresse;
+    public String getNom() {
+        return nom;
     }
 
     public int getAge() {
         return age;
     }
 
-    public void afficher() {
-        System.out.println(prenom + " " + nom + " (" + age + " ans)");
+    public String toString() {
+        return prenom + " " + nom + " (" + age + " ans)";
     }
 
-/*
-    public static boolean compare(Personne p1, Personne p2) {
-        if (p1.age > p2.age) {
-            System.out.println(p1.prenom + " est plus vieux que " + p2.prenom);
-            return true;
+    @Override
+    public boolean isEqual(NotreComparable autre) {
+        //if (autre.getClass() == Personne.class) {
+        if (autre instanceof Personne) {
+            Personne pAutre = (Personne) autre;
+            return this.NAS.equals(pAutre.NAS);
         }
-        else {
-            System.out.println(p2.prenom + " est plus vieux que " + p1.prenom);
-            return false;
-        }
+        return false;
     }
- */
 
-    public boolean compareAvec(Personne autre) {
-        if (this.age > autre.age) {
-            System.out.println("Je (" + this.prenom + ") suis plus vieux que " + autre.prenom);
-            return true;
-        }
-        else {
-            System.out.println(autre.prenom + " est plus vieux que moi (" + this.prenom + ")");
-            return false;
-        }
+    @Override
+    public boolean isLessThan(NotreComparable autre) {
+        return false;
+    }
+
+    @Override
+    public boolean isGreaterThan(NotreComparable autre) {
+        return false;
     }
 
     public static void main(String[] args) {
-        Personne david = new Personne("Giasson", "David", "4.170.3", 30);
+        Personne p1 = new Personne("Alice", "Practice", 20);
+        Personne e1 = new Etudiant("Alice", "Practice", 20, 98, 60.0);
+        Personne e2 = new Etudiant("Bob", "Morane", 40, 99, 60.0);
 
-        //System.out.println(david.prenom + " " + david.nom + " (" + david.age + " ans)"); // Ça marche, mais c'est long...
-        //afficher(david); // Ne compilera pas (sans créer une fonction "afficher(Personne p)")
-        david.afficher(); // Ça c'est penser en OO :)
+        System.out.println("p1 == e1 : " + p1.isEqual(e1));
+        System.out.println("e1 == e2 : " + e1.isEqual(e2));
 
-        Personne michel = new Personne("Généreux", "Michel",  50);
-        michel.afficher();
-
-        Personne alice = new Personne(" au pays des merveilles", "Alice", 15);
-
-        System.out.println();
-
-        david.compareAvec(michel);
-        michel.compareAvec(david);
-
-        david.compareAvec(alice);
-        michel.compareAvec(alice);
+        Produit banane = new Produit("Banane", 10.0f);
+        System.out.println("p1 == banane : " + p1.isEqual(banane));
     }
 }
