@@ -24,10 +24,6 @@ public class Personne implements NotreComparable {
         return age;
     }
 
-    public String toString() {
-        return prenom + " " + nom + " (" + age + " ans)";
-    }
-
     @Override
     public boolean isEqual(NotreComparable autre) {
         //if (autre.getClass() == comparables.Personne.class) {
@@ -48,6 +44,11 @@ public class Personne implements NotreComparable {
         return false;
     }
 
+    @Override
+    public String toString() {
+        return prenom + " " + nom;
+    }
+
     public static void main(String[] args) {
         Personne p1 = new Personne("Alice", "Practice", 20);
         Personne e1 = new Etudiant("Alice", "Practice", 20, 98, 60.0, ProgrammeEtudes.TINFO);
@@ -61,6 +62,7 @@ public class Personne implements NotreComparable {
         System.out.println("e1 == e2 : " + e1.isEqual(e2));
 
         Produit banane = new Produit("Banane", 10.0f);
+        System.out.println(banane);
         System.out.println("p1 == banane : " + p1.isEqual(banane));
     }
 }

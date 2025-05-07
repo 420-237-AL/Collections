@@ -56,11 +56,6 @@ public class Produit implements NotreComparable {
         return id;
     }
 
-    @Override // Annotation optionnelle
-    public String toString() {
-        return nom + " : " + prix + " : " + id;
-    }
-
     public boolean comparer(Produit autre) {
         return (this.nom.equalsIgnoreCase(autre.nom)
                 && this.id == autre.id);
@@ -84,5 +79,10 @@ public class Produit implements NotreComparable {
     @Override
     public boolean isGreaterThan(NotreComparable autre) {
         return false;
+    }
+
+    @Override // Annotation optionnelle
+    public String toString() {
+        return id + ": " + nom + " (" + prix + "$)";
     }
 }

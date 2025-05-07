@@ -1,10 +1,10 @@
 package comparables;
 
 public enum ProgrammeEtudes {
+    TADMIN,
+    TEEB,
     TINFO,
     TGP,
     TGC,
-    TA,
-    TEEB,
-    TSE
+    TSI
 }
