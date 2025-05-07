@@ -1,3 +1,5 @@
+import collections.Liste;
+import collections.Vecteur;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test; // Ce 'import' permet de créer des annotations '@Test'.
 

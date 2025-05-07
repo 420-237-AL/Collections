@@ -1,3 +1,5 @@
+package collections;
+
 public class File <ParamType> {
     Liste<ParamType> liste;
 

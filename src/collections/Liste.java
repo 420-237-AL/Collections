@@ -1,3 +1,5 @@
+package collections;
+
 public class Liste<ParamType> extends Collection<ParamType> {
     private Noeud premier = null; // Dans une liste, il n'y a pas de tableau, seulement un pointeur vers le premier Noeud.
 
@@ -102,10 +104,10 @@ public class Liste<ParamType> extends Collection<ParamType> {
         return true;
     }
 
-    // Ici ce n'est pas vraiment une "redéfinition" de la méthode retirerTout(Collection) car cette variante ne fonctionne qu'avec des listes.
+    // Ici ce n'est pas vraiment une "redéfinition" de la méthode retirerTout(collections.Collection) car cette variante ne fonctionne qu'avec des listes.
     public boolean retirerTout(Liste<ParamType> autre) {
         boolean reussite = true;
-        // Version 2: On fait une boucle directement sur les noeuds de l'autre Liste, évitant ainsi la double boucle de get().
+        // Version 2: On fait une boucle directement sur les noeuds de l'autre collections.Liste, évitant ainsi la double boucle de get().
         for (Noeud courant = autre.premier; courant != null; courant = courant.suivant)
             reussite &= retirer(courant.valeur);
         return reussite;

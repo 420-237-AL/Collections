@@ -1,7 +1,9 @@
+package collections;
+
 public class Vecteur<ParamType> extends Collection<ParamType> {
     private static final int CAPACITE_INITIALE = 5, RATIO_AGRANDISSEMENT = 2;
 
-    private ParamType[] tab; // Les données du Vecteur sont stockées dans un tableau (array).
+    private ParamType[] tab; // Les données du collections.Vecteur sont stockées dans un tableau (array).
 
     // Constructeur avec une capacité initiale configurable (n'est pas exigé dans les notes de cours)
     public Vecteur(int capaciteInitiale) {
@@ -23,7 +25,7 @@ public class Vecteur<ParamType> extends Collection<ParamType> {
         return tab[index];
     }
 
-    private void resize(int nouvelleCapacite) { // Permet d'agrandir ou de réduire la capacité du Vecteur.
+    private void resize(int nouvelleCapacite) { // Permet d'agrandir ou de réduire la capacité du collections.Vecteur.
         assert nouvelleCapacite >= nbElements;
         ParamType[] newTab = (ParamType[]) (new Object[nouvelleCapacite]);
         for (int i = 0; i < nbElements; i++)
@@ -55,7 +57,7 @@ public class Vecteur<ParamType> extends Collection<ParamType> {
         nbElements++;
     }
 
-    @Override // Cette version de ajouterTout() est optimisée pour la classe Vecteur.
+    @Override // Cette version de ajouterTout() est optimisée pour la classe collections.Vecteur.
     public void ajouterTout(Collection<ParamType> autre) {
         agrandir(autre.getNbElements()); // On agrandit d'un coup le vecteur à une taille suffisante.
         super.ajouterTout(autre); // Puis on continue "normalement" avec la méthode de notre superclasse.

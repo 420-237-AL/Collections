@@ -1,3 +1,5 @@
+package collections;
+
 public abstract class Collection<ParamType> {
     protected int nbElements = 0;
 
@@ -27,7 +29,7 @@ public abstract class Collection<ParamType> {
     }
 
     // Cette "surcharge" de trouverTout() retourne le nombre d'éléments communs entre les collections;
-    public int trouverNbCommuns(Collection<ParamType> autre) { // Elle accepte toutes les sortes de Collection.
+    public int trouverNbCommuns(Collection<ParamType> autre) { // Elle accepte toutes les sortes de collections.Collection.
         int communs = 0;
         for (int i = 0; i < autre.getNbElements(); i++)
             if (this.trouver(autre.get(i)) != -1)

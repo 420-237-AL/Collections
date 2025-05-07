@@ -1,9 +1,11 @@
+import collections.Liste;
+import collections.Vecteur;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-// Les tests unitaires de la classe Liste sont presque identiques à ceux de la classe Vecteur;
+// Les tests unitaires de la classe collections.Liste sont presque identiques à ceux de la classe collections.Vecteur;
 // C'est logique puisque les opérations sont sensées avoir les mêmes résultats.
 class ListeTest {
     Liste<Character> v1;

@@ -1,8 +1,12 @@
+import collections.Collection;
+import collections.Liste;
+import collections.Vecteur;
+
 public class Main {
 
-    // Le 'main' de la classe Vecteur peut être repris pour la classe Liste avec seulement quelques ajustements mineurs.
+    // Le 'main' de la classe collections.Vecteur peut être repris pour la classe collections.Liste avec seulement quelques ajustements mineurs.
     public static void main(String[] args) {
-        Collection<Character> v1 = new Liste<>(); // J'ai gardé le nom "v1" pour pouvoir réutiliser le Main de Vecteur.
+        Collection<Character> v1 = new Liste<>(); // J'ai gardé le nom "v1" pour pouvoir réutiliser le Main de collections.Vecteur.
         System.out.println(v1.getNbElements() + ": " + v1);
 
         // Test de ajouter(element) et ajouter(index)
@@ -17,7 +21,7 @@ public class Main {
         System.out.println(v1.getNbElements() + ": " + v1);
 
         // Test de ajouterTout(collection)
-        Collection<Character> v2 = new Vecteur<>(); // ou 'v2 = new Liste<>();'
+        Collection<Character> v2 = new Vecteur<>(); // ou 'v2 = new collections.Liste<>();'
         v2.ajouter('F');
         v2.ajouter('G');
         v2.ajouter('H');

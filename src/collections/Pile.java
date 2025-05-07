@@ -1,3 +1,5 @@
+package collections;
+
 public class Pile<ParamType> {
     Vecteur<ParamType> vecteur;
 
