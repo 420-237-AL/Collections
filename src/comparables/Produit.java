@@ -1,3 +1,5 @@
+package comparables;
+
 public class Produit implements NotreComparable {
     private String nom;
     private double prix;

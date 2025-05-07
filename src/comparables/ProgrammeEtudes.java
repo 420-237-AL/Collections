@@ -1,3 +1,5 @@
+package comparables;
+
 public enum ProgrammeEtudes {
     TINFO,
     TGP,

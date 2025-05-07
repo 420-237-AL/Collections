@@ -1,3 +1,5 @@
+package comparables;
+
 public class Etudiant extends Personne {
     private int matricule;
     private double moyenne;

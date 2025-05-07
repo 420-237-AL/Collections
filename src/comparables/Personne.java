@@ -1,3 +1,5 @@
+package comparables;
+
 public class Personne implements NotreComparable {
     protected String prenom, nom;
     protected int age;
@@ -28,7 +30,7 @@ public class Personne implements NotreComparable {
 
     @Override
     public boolean isEqual(NotreComparable autre) {
-        //if (autre.getClass() == Personne.class) {
+        //if (autre.getClass() == comparables.Personne.class) {
         if (autre instanceof Personne) {
             Personne pAutre = (Personne) autre;
             return this.NAS.equals(pAutre.NAS);

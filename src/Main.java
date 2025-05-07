@@ -1,6 +1,5 @@
-import collections.Collection;
-import collections.Liste;
-import collections.Vecteur;
+//import java.util.*;
+import collections.*;
 
 public class Main {
 
