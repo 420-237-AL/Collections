@@ -1,7 +1,9 @@
-package collections;
+package collections.adapteurs;
+
+import collections.Vecteur;
 
 public class Pile<ParamType> {
-    Vecteur<ParamType> vecteur;
+    private Vecteur<ParamType> vecteur;
 
     public Pile() { // Une pile (ou "Stack" en anglais) est une structure de données adaptée d'un vecteur.
         vecteur = new Vecteur<>();

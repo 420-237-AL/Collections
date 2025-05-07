@@ -1,7 +1,9 @@
-package collections;
+package collections.adapteurs;
+
+import collections.Liste;
 
 public class File <ParamType> {
-    Liste<ParamType> liste;
+    private Liste<ParamType> liste;
 
     public File() { // Une file (ou "Queue" en anglais) est une structure adaptée d'une liste (typiquement).
         liste = new Liste<>();
