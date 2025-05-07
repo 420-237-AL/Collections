@@ -48,8 +48,12 @@ public class Personne implements NotreComparable {
 
     public static void main(String[] args) {
         Personne p1 = new Personne("Alice", "Practice", 20);
-        Personne e1 = new Etudiant("Alice", "Practice", 20, 98, 60.0);
-        Personne e2 = new Etudiant("Bob", "Morane", 40, 99, 60.0);
+        Personne e1 = new Etudiant("Alice", "Practice", 20, 98, 60.0, ProgrammeEtudes.TINFO);
+        Personne e2 = new Etudiant("Bob", "Morane", 40, 99, 60.0, ProgrammeEtudes.TEEB);
+
+        System.out.println(p1);
+        System.out.println(e1);
+        System.out.println(e2);
 
         System.out.println("p1 == e1 : " + p1.isEqual(e1));
         System.out.println("e1 == e2 : " + e1.isEqual(e2));

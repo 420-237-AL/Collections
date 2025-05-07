@@ -1,11 +1,13 @@
 public class Etudiant extends Personne {
     private int matricule;
     private double moyenne;
+    private ProgrammeEtudes programme;
 
-    public Etudiant(String prenom, String nom, int age, int matricule, double moyenne) {
+    public Etudiant(String prenom, String nom, int age, int matricule, double moyenne, ProgrammeEtudes programme) {
         super(prenom, nom, age);
         this.matricule = matricule;
         this.moyenne = moyenne;
+        this.programme = programme;
     }
 
     public int getMatricule() {
@@ -18,6 +20,6 @@ public class Etudiant extends Personne {
 
     @Override
     public String toString() {
-        return super.toString() + " [#" + matricule + "]";
+        return super.toString() + " [" + programme + " #" + matricule + "]" ;
     }
 }
