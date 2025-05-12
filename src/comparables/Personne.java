@@ -5,10 +5,13 @@ public class Personne implements NotreComparable {
     protected int age;
     private final String NAS;
 
-    public Personne(String prenom, String nom, int age) {
+    public Personne(String prenom, String nom, int age)
+            throws IllegalArgumentException {
         this.prenom = prenom;
         this.nom = nom;
-        this.age = age > 0 ? age : -1;
+        //this.age = age > 0 ? age : -1;
+        if (age <= 0)
+            throw new IllegalArgumentException("L'âge doit être positif.");
         this.NAS = nom + prenom.substring(0, 2) + age;
     }
 
@@ -50,9 +53,15 @@ public class Personne implements NotreComparable {
     }
 
     public static void main(String[] args) {
-        Personne p1 = new Personne("Alice", "Practice", 20);
-        Personne e1 = new Etudiant("Alice", "Practice", 20, 98, 60.0, ProgrammeEtudes.TINFO);
-        Personne e2 = new Etudiant("Bob", "Morane", 40, 99, 60.0, ProgrammeEtudes.TEEB);
+        Personne p1 = null, e1 = null, e2 = null;
+        try {
+            p1 = new Personne("Alice", "Practice", 10);
+            e1 = new Etudiant("Alice", "Practice", 20, 98, 60.0, ProgrammeEtudes.TINFO);
+            e2 = new Etudiant("Bob", "Morane", 40, 99, 60.0, ProgrammeEtudes.TEEB);
+        }
+        catch (IllegalArgumentException e) {
+            System.err.println(e.toString());
+        }
 
         System.out.println(p1);
         System.out.println(e1);
