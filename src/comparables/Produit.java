@@ -13,17 +13,19 @@ public class Produit implements NotreComparable {
         return nbProduits;
     }
 
-    public double calculerTaxe() {
-        return prix * (1 + TAXE);
+    public static double calculerTaxe(double montant) {
+        return montant * (1 + TAXE);
     }
 
-    public Produit(String nom, double prix, int id) {
+    public Produit(String nom, double prix, int id) throws IDReserveException {
         this.nom = nom;
         this.prix = prix;
+        if (id < nbProduits)
+            throw new IDReserveException(id);
         this.id = id;
     }
 
-    public Produit(String nom, float prix) {
+    public Produit(String nom, float prix) throws IDReserveException {
         this(nom, prix, nbProduits++);
     }
 
