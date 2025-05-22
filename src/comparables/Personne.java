@@ -6,7 +6,7 @@ public class Personne implements NotreComparable {
     private final String NAS;
 
     public Personne(String prenom, String nom, int age)
-            throws IllegalArgumentException {
+            throws IllegalArgumentException /* Ici, le "throws ..." est optionnel. */ {
         this.prenom = prenom;
         this.nom = nom;
         //this.age = age > 0 ? age : -1;
@@ -57,10 +57,17 @@ public class Personne implements NotreComparable {
         try {
             p1 = new Personne("Alice", "Practice", 10);
             e1 = new Etudiant("Alice", "Practice", 20, 98, 60.0, ProgrammeEtudes.TINFO);
-            e2 = new Etudiant("Bob", "Morane", 40, 99, 60.0, ProgrammeEtudes.TEEB);
+            e2 = new Etudiant("Bob", "Morane", -30, 99, 60.0, ProgrammeEtudes.TEEB);
         }
         catch (IllegalArgumentException e) {
-            System.err.println(e.toString());
+            e.printStackTrace();
+            e2 = new Etudiant("Bob", "Morane", 40, 99, 60.0, ProgrammeEtudes.TEEB);
+        }
+        catch (IndexOutOfBoundsException e) {
+            System.err.println("Le tableau des personnes est plein!");
+        }
+        catch (Exception e) {
+            System.err.println("Une erreur est survenue :(");
         }
 
         System.out.println(p1);
@@ -70,8 +77,14 @@ public class Personne implements NotreComparable {
         System.out.println("p1 == e1 : " + p1.isEqual(e1));
         System.out.println("e1 == e2 : " + e1.isEqual(e2));
 
-        Produit banane = new Produit("Banane", 10.0f);
-        System.out.println(banane);
-        System.out.println("p1 == banane : " + p1.isEqual(banane));
+        try {
+            Produit banane = new Produit("Banane", 10.0f);
+            System.out.println(banane);
+            System.out.println("p1 == banane : " + p1.isEqual(banane));
+        }
+        catch (IDReserveException e) {
+            System.err.println(e.getMessage());
+            throw new IllegalStateException("Produits avec id identiques détectés.");
+        }
     }
 }

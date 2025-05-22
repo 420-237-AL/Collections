@@ -5,7 +5,7 @@ public class Produit implements NotreComparable {
     private double prix;
     private final int id; // une "fausse" constante
 
-    private static int nbProduits;
+    private static int nbProduits = 0;
     public static final double PRIX_MAX = 1000;
     public static final double TAXE = 0.15; // une "vraie" constante
 
@@ -26,7 +26,7 @@ public class Produit implements NotreComparable {
     }
 
     public Produit(String nom, float prix) throws IDReserveException {
-        this(nom, prix, nbProduits++);
+        this(nom, prix, ++nbProduits);
     }
 
     // Constructeur de copie
